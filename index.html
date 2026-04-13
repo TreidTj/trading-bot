@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quran Companion</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Quran Companion</h1>
+      <p>Чтение, прослушивание шейхов и ваш прогресс</p>
+    </header>
+
+    <nav class="tabs" aria-label="Основная навигация">
+      <button class="tab-btn active" data-tab="quran">Коран</button>
+      <button class="tab-btn" data-tab="audio">Шейхи</button>
+      <button class="tab-btn" data-tab="profile">Профиль</button>
+    </nav>
+
+    <main>
+      <section id="quran" class="tab-panel active" aria-live="polite">
+        <div class="panel-header">
+          <h2>Страница чтения</h2>
+          <div class="controls">
+            <button id="toggleTextBtn" class="control-btn" title="Скрыть/показать текст">
+              👁️ Глаза
+            </button>
+            <button id="micBtn" class="control-btn" title="Включить/выключить микрофон">
+              🎤 Микрофон
+            </button>
+          </div>
+        </div>
+
+        <p class="hint">
+          Нажмите 🎤 и читайте вслух. Приложение будет открывать слова по мере того,
+          как вы их произносите.
+        </p>
+
+        <article id="ayahContainer" class="ayah" dir="rtl" lang="ar"></article>
+        <p id="speechStatus" class="status">Микрофон выключен.</p>
+      </section>
+
+      <section id="audio" class="tab-panel">
+        <h2>Прослушивание шейхов</h2>
+        <p class="hint">Выберите шейха и слушайте чтение.</p>
+
+        <div class="player-wrap">
+          <label for="sheikhSelect">Шейх:</label>
+          <select id="sheikhSelect">
+            <option value="https://download.quranicaudio.com/quran/yasser_ad-dussary/murattal/001.mp3">
+              Ясир ад-Доссари
+            </option>
+            <option value="https://download.quranicaudio.com/quran/muhammad_al_luhaidan/001.mp3">
+              Мухаммад аль-Люхайдан
+            </option>
+            <option value="https://download.quranicaudio.com/quran/maher_almuaiqly/001.mp3">
+              Махер Аль-Муайкли
+            </option>
+            <option value="https://download.quranicaudio.com/quran/abdurrahmaan_as-sudais/murattal/001.mp3">
+              Абдуррахман ас-Судайс
+            </option>
+          </select>
+
+          <audio id="audioPlayer" controls preload="none">
+            <source
+              src="https://download.quranicaudio.com/quran/yasser_ad-dussary/murattal/001.mp3"
+              type="audio/mpeg"
+            />
+            Ваш браузер не поддерживает аудио.
+          </audio>
+        </div>
+      </section>
+
+      <section id="profile" class="tab-panel">
+        <h2>Профиль</h2>
+        <div class="profile-grid">
+          <div class="avatar-block">
+            <img id="avatarPreview" src="https://via.placeholder.com/130x130?text=Фото" alt="Аватар" />
+            <label class="upload-btn">
+              Добавить фото из галереи
+              <input id="avatarInput" type="file" accept="image/*" />
+            </label>
+          </div>
+
+          <div class="profile-form">
+            <label>
+              Имя
+              <input id="nameInput" type="text" placeholder="Введите имя" />
+            </label>
+
+            <label>
+              Какая сура изучается
+              <input id="surahInput" type="text" placeholder="Например: Аль-Бакара" />
+            </label>
+
+            <label>
+              Выучено аятов
+              <input id="learnedInput" type="number" min="0" placeholder="0" />
+            </label>
+
+            <label>
+              Осталось аятов
+              <input id="remainingInput" type="number" min="0" placeholder="0" />
+            </label>
+
+            <button id="saveProfileBtn">Сохранить профиль</button>
+          </div>
+        </div>
+        <p id="profileStatus" class="status">Пока нет сохранённых данных.</p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
